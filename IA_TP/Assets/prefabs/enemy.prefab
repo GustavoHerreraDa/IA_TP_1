@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7228791691342958524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467473973894158667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279645d24d27fec49b8932eabd5feb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 4.52
+  angle: 80
+  target: {fileID: 5146014452370407880, guid: 11f5429f37292fc47bbdca0b150ed6dd, type: 3}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &8562189254921223584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467473973894158667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda078187a990a41ad680914a6853ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 8562189255180571110}
+  - {fileID: 8562189253680657365}
+  - {fileID: 8562189254009303695}
+  - {fileID: 8562189254694112991}
+  Speed: 3
 --- !u!1 &8562189253680657364
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,24 +192,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8562189254921223584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7467473973894158667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dda078187a990a41ad680914a6853ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 8562189255180571110}
-  - {fileID: 8562189253680657365}
-  - {fileID: 8562189254009303695}
-  - {fileID: 8562189254694112991}
-  Speed: 3
 --- !u!1 &8562189255180571113
 GameObject:
   m_ObjectHideFlags: 0
