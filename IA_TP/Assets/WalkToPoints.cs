@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class WalkToPoints : MonoBehaviour
 {
-    public GameObject StartMove;
-    public GameObject EndMove;
-    private bool movement;
-    public float speed;
+    public List<Transform> waypoints = new List<Transform>();
+    private Transform targetMyPoint;
+    private int targetMyPointIndex =0;
+    private int LastargetMyPointIndex;
+    private float MinDistance = 0.1f;
+
+    public float Speed;
+    private float RotationSpeed = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartMove.transform.parent = null;
-        EndMove.transform.parent = null;
-
-        if (!movement)
-        {
-            transform.position = StartMove.transform.position;
-        }
-        else
-        {
-            transform.position = EndMove.transform.position;
-        }
+        LastargetMyPointIndex = waypoints.Count - 1;
+        targetMyPoint = waypoints[targetMyPointIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!movement)
-        {
-           transform.position = Vector3.MoveTowards(transform.position, EndMove.transform.position, speed * Time.deltaTime);
-           
-            if (transform.position == EndMove.transform.position)
-            {
-                
-                movement = true;
-                
-            }
-        }
+        float MovementStep = Speed * Time.deltaTime;
+        float RotationStep= RotationSpeed * Time.deltaTime;
 
-        if (movement)
+        Vector3 LookAtWayPoint = targetMyPoint.position - transform.position;
+        Quaternion RotationToTarget = Quaternion.LookRotation(LookAtWayPoint);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, RotationToTarget, RotationStep);
+
+        float distance = Vector3.Distance(transform.position, targetMyPoint.position);
+
+        CheckWayPoint(distance);
+        transform.position = Vector3.MoveTowards(transform.position, targetMyPoint.position, MovementStep);
+    }
+    void CheckWayPoint(float currentDistance)
+    {
+        if(currentDistance<=MinDistance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, StartMove.transform.position, speed * Time.deltaTime);
-            if (transform.position == StartMove.transform.position)
-            {
-                
-                movement = false;
-               
-            }
+            targetMyPointIndex++;
+            UpdateWayPoint();
         }
+    }
+    void UpdateWayPoint()
+    {
+        if(targetMyPointIndex>LastargetMyPointIndex)
+        {
+            targetMyPointIndex = 0;
+        }
+        targetMyPoint = waypoints[targetMyPointIndex];
     }
 }
