@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279645d24d27fec49b8932eabd5feb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4.52
+  range: 4
   angle: 80
-  target: {fileID: 5146014452370407880, guid: 11f5429f37292fc47bbdca0b150ed6dd, type: 3}
+  target: {fileID: 5025843272994430824, guid: 0a9bae9e13a2e3b4c80dd40ce0e32d47, type: 3}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -36,6 +36,20 @@ MonoBehaviour:
   - {fileID: 8562189254009303695}
   - {fileID: 8562189254694112991}
   Speed: 3
+--- !u!114 &6814569113494419070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467473973894158667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367e0c4e802fb65479cd937ad3656d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  player: {fileID: 5025843272994430824, guid: 0a9bae9e13a2e3b4c80dd40ce0e32d47, type: 3}
 --- !u!1 &8562189253680657364
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +297,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257293474527108044, guid: 721b3f9d689a5984c94bfe6983097ee2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65504
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257293474527108044, guid: 721b3f9d689a5984c94bfe6983097ee2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65504
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257293474527108044, guid: 721b3f9d689a5984c94bfe6983097ee2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.65504
       objectReference: {fileID: 0}
     - target: {fileID: 1257293474527266732, guid: 721b3f9d689a5984c94bfe6983097ee2,
         type: 3}
