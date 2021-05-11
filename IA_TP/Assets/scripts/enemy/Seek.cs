@@ -28,7 +28,6 @@ public class Seek : ISteering
 
         Vector3 dir = (_target.position - _transform.position).normalized;
 
-        // Checks if obstacle (very grammar)
 
         Collider[] obstacles = Physics.OverlapSphere(_transform.position, dodgeRadius, LayerMask.GetMask("Ambient"));
         if (obstacles.Length > 0)
