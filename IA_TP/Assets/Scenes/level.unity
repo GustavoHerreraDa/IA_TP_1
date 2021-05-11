@@ -7826,6 +7826,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8562189254791716090, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8562189254791716091, guid: 547d5533d83d50540975e0ff07c32661,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8963,6 +8968,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 474850653}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &475252314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475252315}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475252315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475252314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.92, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1248245597}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &475586121
 GameObject:
   m_ObjectHideFlags: 0
@@ -10118,6 +10153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562189254791716090, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562189254791716091, guid: 547d5533d83d50540975e0ff07c32661,
         type: 3}
@@ -26120,6 +26160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8562189254791716090, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8562189254791716091, guid: 547d5533d83d50540975e0ff07c32661,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28205,6 +28250,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4809255288549338, guid: 6acf036e14cf86b4dbc2f4bbc89f7bf0,
     type: 3}
   m_PrefabInstance: {fileID: 1239615608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1248245597 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7467473973893661995, guid: 547d5533d83d50540975e0ff07c32661,
+    type: 3}
+  m_PrefabInstance: {fileID: 8562189255329253726}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1252915735
 PrefabInstance:
@@ -46260,6 +46311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8562189254791716090, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8562189254791716091, guid: 547d5533d83d50540975e0ff07c32661,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46985,6 +47041,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 22056750092553515, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: firepoint
+      value: 
+      objectReference: {fileID: 475252315}
+    - target: {fileID: 22056750092553515, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814569113494419070, guid: 547d5533d83d50540975e0ff07c32661,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7228791691342958524, guid: 547d5533d83d50540975e0ff07c32661,
         type: 3}
       propertyPath: target

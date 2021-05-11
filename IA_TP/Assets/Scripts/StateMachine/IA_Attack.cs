@@ -50,6 +50,7 @@ public class IA_Attack<T> : IState<T>
 
     public void Shoot()
     {
+        enemy.Attack();
     }
 
 

@@ -14,12 +14,12 @@ public class IA_Idle<T> : IState<T>
 
     public void Awake()
     {
-        
+        Debug.Log("Awake de IdleState");
     }
 
     public void Execute()
     {
-
+        _enemy.GoPatrol();
     }
 
     public void Sleep()

@@ -21,8 +21,7 @@ public class IA_Patrol<T> : IState<T>
 
     public void Awake()
     {
-
-        //seek = new Seek(_enemy.transform, playerT, dodgeStrenght, dodgeRadius);
+        Debug.Log("Awake de Patrol");
     }
 
     public void Execute()
@@ -54,10 +53,11 @@ public class IA_Patrol<T> : IState<T>
     }
     public void Move()
     {
-        //dir = seek.GetDir();
-        dir.y = 0;
-        dir = dir.normalized;
-        rigidbody.velocity = dir * speed;
+        walktoPoints.Walk();
+        //dir = walktoPoints.M;
+        //dir.y = 0;
+        //dir = dir.normalized;
+        //rigidbody.velocity = dir * speed;
 
         //enemy.transform.forward = Vector3.Lerp(, dir, 0.2f);
     }

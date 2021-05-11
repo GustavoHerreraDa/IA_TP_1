@@ -13,6 +13,7 @@ public class IA_Chase<T> : IState<T>
     float dodgeRadius = 20;
     Vector3 dir;
     float speed = 2;
+    Seek seek;
 
     public IA_Chase(EnemyController enemy, Rigidbody rb, float ds = 10, float dr = 20, float s = 7)
     {
@@ -26,7 +27,7 @@ public class IA_Chase<T> : IState<T>
     public void Awake()
     {
         playerTransform = Object.FindObjectOfType<Player>().transform;
-        //seek = new Seek(_enemy.transform, playerT, dodgeStrenght, dodgeRadius);
+        seek = new Seek(enemy.transform, playerTransform.transform, 3);
     }
 
     public void Execute()
@@ -58,7 +59,7 @@ public class IA_Chase<T> : IState<T>
     }
     public void Move()
     {
-        //dir = seek.GetDir();
+        dir = seek.GetDirection();
         dir.y = 0;
         dir = dir.normalized;
         enemyRigidbody.velocity = dir * speed;

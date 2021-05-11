@@ -23,8 +23,14 @@ public class WalkToPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void Walk()
+    {
+
         float MovementStep = Speed * Time.deltaTime;
-        float RotationStep= RotationSpeed * Time.deltaTime;
+        float RotationStep = RotationSpeed * Time.deltaTime;
 
         Vector3 LookAtWayPoint = targetMyPoint.position - transform.position;
         Quaternion RotationToTarget = Quaternion.LookRotation(LookAtWayPoint);

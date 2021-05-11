@@ -19,6 +19,7 @@ public class QuestionNode : INode
 
     public void Execute()
     {
+
         if (_myQuestion())
         {
             _trueNode.Execute();
