@@ -17,6 +17,9 @@ public class LineOfSight : MonoBehaviour
     public bool IsInSight(Transform target, float range = 5)
     {
         this.range = range;
+        if (target == null)
+            return false;
+
         float distanceToTarget = Vector3.Distance(target.position, transform.position);
         if (distanceToTarget > range) return false;
         float angleToTarget = Vector3.Angle(transform.forward, (target.position - transform.position));
@@ -28,6 +31,9 @@ public class LineOfSight : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (target == null)
+            return;
+
         if (IsInSight(target,range)) Gizmos.color = Color.green;
         else Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);

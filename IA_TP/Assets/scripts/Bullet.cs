@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         bulletTransform = this.GetComponent<Transform>();
-
+        Destroy(this.gameObject, 3f);
     }
 
     void Update()

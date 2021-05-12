@@ -79,7 +79,6 @@ public class EnemyController : MonoBehaviour
         actionChase = new ActionNode(GoChase);
         actionPatrol = new ActionNode(GoPatrol);
 
-        //questionTimeToShoot = new QuestionNode(CheckTimeToFire, actionAttack, actionChase);
         questionSightToAttack = new QuestionNode(IsInSightToAttack, actionAttack, actionChase);
         questionSightToChase = new QuestionNode(IsInSightToChase, questionSightToAttack, actionPatrol);
         questionPatrol = new QuestionNode(CheckPatrol, questionSightToChase, actionIdle);
@@ -93,8 +92,13 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         finateStateMachine.OnUpdate();
+        ShootTimer();
+
+        //if (shouldShoot)
+        //{
+        //    shouldShoot = false;
+        //}
     }
 
     public void StartTree()
@@ -104,9 +108,12 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
-        GameObject bulletInstance = Instantiate(fireball);
-        bulletInstance.transform.forward = fireballOrigin.right;
-        bulletInstance.transform.position = fireballOrigin.position;
+        if (shouldShoot)
+        {
+            GameObject bulletInstance = Instantiate(fireball);
+            bulletInstance.transform.forward = fireballOrigin.right;
+            bulletInstance.transform.position = fireballOrigin.position;
+        }
     }
 
     void GoIdle()
@@ -140,7 +147,6 @@ public class EnemyController : MonoBehaviour
 
         if (distance < 2.5f)
         {
-            Debug.Log("IsInSightToAttack true");
             return true;
         }
         else
