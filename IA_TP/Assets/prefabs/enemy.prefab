@@ -198,7 +198,7 @@ MeshCollider:
   m_GameObject: {fileID: 516432714}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   angle: 80
-  target: {fileID: 0}
+  target: {fileID: 5025843272994430824, guid: 0a9bae9e13a2e3b4c80dd40ce0e32d47, type: 3}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
