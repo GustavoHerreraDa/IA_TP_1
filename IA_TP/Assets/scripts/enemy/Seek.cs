@@ -9,7 +9,7 @@ public class Seek : ISteering
     float _distance;
 
     float dodgeStrenght = 10;
-    float dodgeRadius = 20;
+    float dodgeRadius = 10;
     public Seek(Transform to, Transform from, float dist)
     {
         _target = to;
@@ -29,7 +29,7 @@ public class Seek : ISteering
         Vector3 dir = (_target.position - _transform.position).normalized;
 
 
-        Collider[] obstacles = Physics.OverlapSphere(_transform.position, dodgeRadius, LayerMask.GetMask("Ambient"));
+        Collider[] obstacles = Physics.OverlapSphere(_transform.position, dodgeRadius, LayerMask.GetMask("Obstacle"));
         if (obstacles.Length > 0)
         {
             float minDistance = Vector3.Distance(obstacles[0].transform.position, _transform.position);

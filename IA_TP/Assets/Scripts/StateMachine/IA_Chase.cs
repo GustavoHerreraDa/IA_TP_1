@@ -10,7 +10,7 @@ public class IA_Chase<T> : IState<T>
     Transform playerTransform;
     //Seek seek;
     float dodgeStrenght = 10;
-    float dodgeRadius = 20;
+    float dodgeRadius = 10;
     float minDistance = 2.5f;
     Vector3 dir;
     float speed = 2;
@@ -90,6 +90,36 @@ public class IA_Chase<T> : IState<T>
         if (distance < minDistance)
             return;
 
-        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, playerTransform.position, MovementStep);
+
+        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, playerTransform.position + AvoidObstacle(), MovementStep);
+    }
+
+    public Vector3 AvoidObstacle()
+    {
+        Vector3 avoidDir = Vector3.zero;
+
+        Collider[] obstacles = Physics.OverlapSphere(enemy.transform.position, dodgeRadius, LayerMask.GetMask("Ambient"));
+
+
+        if (obstacles.Length > 0)
+        {
+            float minDistance = Vector3.Distance(obstacles[0].transform.position, enemy.transform.position);
+            int index = 0;
+            for (int i = 1; i < obstacles.Length; i++)
+            {
+                //Debug.Log("AvoidObstacle 3 " + i);
+
+                float currentDistance = Vector3.Distance(enemy.transform.position, obstacles[i].transform.position);
+                if (currentDistance < minDistance)
+                {
+                    minDistance = currentDistance;
+                    index = i;
+                }
+            }
+            avoidDir = (obstacles[index].transform.position - enemy.transform.position).normalized * ((dodgeRadius - minDistance) / dodgeRadius) * dodgeStrenght * -1f;
+            dir += avoidDir;
+        }
+
+        return avoidDir.normalized;
     }
 }

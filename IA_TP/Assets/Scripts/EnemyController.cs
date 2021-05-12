@@ -31,8 +31,8 @@ public class EnemyController : MonoBehaviour
     private LineOfSight lineOfSight;
 
     public Transform firepoint;
-    public float dodgeStrenght;
-    public float dodgeRadious;
+    //public float dodgeStrenght;
+    //public float dodgeRadious;
     WalkToPoints walkToPoints;
 
 
@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
 
         idle = new IA_Idle<string>(this);
         patrol = new IA_Patrol<string>(this, myRigidbody, walkToPoints);
-        chase = new IA_Chase<string>(this, myRigidbody, dodgeStrenght, dodgeRadious);
+        chase = new IA_Chase<string>(this, myRigidbody);
         attack = new IA_Attack<string>(this, firepoint);
 
         idle.AddTransition("Patrol", patrol);
