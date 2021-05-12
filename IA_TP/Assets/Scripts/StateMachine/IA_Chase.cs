@@ -18,7 +18,7 @@ public class IA_Chase<T> : IState<T>
     private float RotationSpeed = 2.0f;
 
 
-    public IA_Chase(EnemyController enemy, Rigidbody rb, float ds = 10, float dr = 20, float s = 7)
+    public IA_Chase(EnemyController enemy, Rigidbody rb, float ds = 10, float dr = 20, float s = 4)
     {
         this.enemy = enemy;
         enemyRigidbody = rb;

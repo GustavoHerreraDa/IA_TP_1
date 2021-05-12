@@ -79,7 +79,7 @@ public class EnemyController : MonoBehaviour
         actionPatrol = new ActionNode(GoPatrol);
 
         questionTimeToShoot = new QuestionNode(CheckTimeToFire, actionAttack, actionChase);
-        questionSightToAttack = new QuestionNode(IsInSightToAttack, questionTimeToShoot, actionChase);
+        questionSightToAttack = new QuestionNode(IsInSightToAttack,actionAttack, actionChase);
         questionSightToChase = new QuestionNode(IsInSightToChase, actionChase, actionPatrol);
         questionPatrol = new QuestionNode(CheckPatrol, questionSightToChase, actionIdle);
 
