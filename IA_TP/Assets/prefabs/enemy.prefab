@@ -247,7 +247,7 @@ MonoBehaviour:
   firepoint: {fileID: 475252315}
   dodgeStrenght: 0
   dodgeRadious: 0
-  fireRate: 0
+  fireRate: 1.5
   shootTimer: 0
   shouldShoot: 0
   fireballOrigin: {fileID: 475252315}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   angle: 80
-  target: {fileID: 5025843272994430824, guid: 0a9bae9e13a2e3b4c80dd40ce0e32d47, type: 3}
+  target: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256

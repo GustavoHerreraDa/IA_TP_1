@@ -20,12 +20,7 @@ public class WalkToPoints : MonoBehaviour
         targetMyPoint = waypoints[targetMyPointIndex];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+  
     public void Walk()
     {
 

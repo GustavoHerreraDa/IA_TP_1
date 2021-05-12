@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
     public Transform firepoint;
     public float dodgeStrenght;
     public float dodgeRadious;
-    private WalkToPoints walkToPoints;
+    WalkToPoints walkToPoints;
 
 
     //Shoot timer
@@ -114,6 +114,8 @@ public class EnemyController : MonoBehaviour
             bulletInstance.transform.forward = fireballOrigin.right;
             bulletInstance.transform.position = fireballOrigin.position;
         }
+        else IsInSightToAttack();        
+        
     }
 
     void GoIdle()
@@ -149,8 +151,13 @@ public class EnemyController : MonoBehaviour
         {
             return true;
         }
-        else
-            return false;
+        else if (distance > 4f)
+        {
+            walkToPoints.Walk();
+        }
+
+        return false;
+        
     }
 
     public bool CheckTimeToFire()
