@@ -11,8 +11,10 @@ public class IA_Chase<T> : IState<T>
     //Seek seek;
     float dodgeStrenght = 10;
     float dodgeRadius = 20;
+    float minDistance = 2.5f;
     Vector3 dir;
     float speed = 2;
+
     Seek seek;
 
     private float RotationSpeed = 2.0f;
@@ -84,6 +86,9 @@ public class IA_Chase<T> : IState<T>
         enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, RotationToTarget, RotationStep);
 
         float distance = Vector3.Distance(enemy.transform.position, playerTransform.position);
+
+        if (distance < minDistance)
+            return;
 
         enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, playerTransform.position, MovementStep);
     }

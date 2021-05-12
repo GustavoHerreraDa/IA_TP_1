@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+
     QuestionNode questionSightToAttack;
     QuestionNode questionSightToChase;
     QuestionNode questionTimeToShoot;
@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     ActionNode actionAttack;
 
     INode _init;
-    
+
     FSM<string> finateStateMachine;
     IState<string> idle;
     IState<string> attack;
@@ -65,8 +65,9 @@ public class EnemyController : MonoBehaviour
         chase.AddTransition("Attack", attack);
         attack.AddTransition("Chase", chase);
 
+
         finateStateMachine = new FSM<string>(idle);
-        
+
         DecisionTree();
 
     }
@@ -78,9 +79,9 @@ public class EnemyController : MonoBehaviour
         actionChase = new ActionNode(GoChase);
         actionPatrol = new ActionNode(GoPatrol);
 
-        questionTimeToShoot = new QuestionNode(CheckTimeToFire, actionAttack, actionChase);
-        questionSightToAttack = new QuestionNode(IsInSightToAttack,actionAttack, actionChase);
-        questionSightToChase = new QuestionNode(IsInSightToChase, actionChase, actionPatrol);
+        //questionTimeToShoot = new QuestionNode(CheckTimeToFire, actionAttack, actionChase);
+        questionSightToAttack = new QuestionNode(IsInSightToAttack, actionAttack, actionChase);
+        questionSightToChase = new QuestionNode(IsInSightToChase, questionSightToAttack, actionPatrol);
         questionPatrol = new QuestionNode(CheckPatrol, questionSightToChase, actionIdle);
 
         _init = questionPatrol;
@@ -92,6 +93,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         finateStateMachine.OnUpdate();
     }
 
@@ -105,7 +107,6 @@ public class EnemyController : MonoBehaviour
         GameObject bulletInstance = Instantiate(fireball);
         bulletInstance.transform.forward = fireballOrigin.right;
         bulletInstance.transform.position = fireballOrigin.position;
-        this.GetComponent<LifeCounter>().recibirDaño();
     }
 
     void GoIdle()
@@ -135,9 +136,15 @@ public class EnemyController : MonoBehaviour
 
     bool IsInSightToAttack()
     {
-        Debug.Log("IsInSightToAttack!");
+        float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        return lineOfSight.IsInSight(player.transform);
+        if (distance < 2.5f)
+        {
+            Debug.Log("IsInSightToAttack true");
+            return true;
+        }
+        else
+            return false;
     }
 
     public bool CheckTimeToFire()
