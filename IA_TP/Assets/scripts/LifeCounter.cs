@@ -49,6 +49,11 @@ public class LifeCounter : MonoBehaviour
     void Die()
     {
         GameObject.Destroy(this.gameObject);
-        SceneManager.LoadScene("04 lose");
+        SceneManager.LoadScene("lost");
+    }
+
+    internal void recibirDaño()
+    {
+        Life -= 1;              
     }
 }

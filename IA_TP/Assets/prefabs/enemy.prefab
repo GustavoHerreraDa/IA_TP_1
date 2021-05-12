@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &475252314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475252315}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475252315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475252314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.92, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7467473973893661995}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2455191125526741999
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16,6 +46,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!65 &8766631088383985286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467473973894158667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.1636624, z: 1}
+  m_Center: {x: 0, y: 1.1755295, z: 0}
 --- !u!114 &22056750092553515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,9 +71,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fdbe59e9e6a604497ac10a27a80d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firepoint: {fileID: 0}
+  firepoint: {fileID: 475252315}
   dodgeStrenght: 0
   dodgeRadious: 0
+  fireRate: 0
+  shootTimer: 0
+  shouldShoot: 0
+  fireballOrigin: {fileID: 475252315}
+  fireball: {fileID: 3601780652932466398, guid: fc1bc504de6691445a19c8b94ea7af93,
+    type: 3}
 --- !u!114 &6814569113494419070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,7 +87,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7467473973894158667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 367e0c4e802fb65479cd937ad3656d27, type: 3}
   m_Name: 
@@ -57,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279645d24d27fec49b8932eabd5feb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4
+  range: 5
   angle: 80
-  target: {fileID: 5025843272994430824, guid: 0a9bae9e13a2e3b4c80dd40ce0e32d47, type: 3}
+  target: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -81,19 +130,6 @@ MonoBehaviour:
   - {fileID: 8562189254009303695}
   - {fileID: 8562189254694112991}
   Speed: 3
---- !u!65 &8766631088383985286
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7467473973894158667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.1636624, z: 1}
-  m_Center: {x: 0, y: 1.1755295, z: 0}
 --- !u!1 &8562189253680657364
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 1257293474527108044, guid: 721b3f9d689a5984c94bfe6983097ee2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6672844
+      value: 1.69
       objectReference: {fileID: 0}
     - target: {fileID: 1257293474527108044, guid: 721b3f9d689a5984c94bfe6983097ee2,
         type: 3}

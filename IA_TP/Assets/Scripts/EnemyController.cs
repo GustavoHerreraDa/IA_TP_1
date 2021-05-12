@@ -41,6 +41,9 @@ public class EnemyController : MonoBehaviour
     public float shootTimer = 0;
     public bool shouldShoot;
 
+    public Transform fireballOrigin;
+    public GameObject fireball;
+
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
@@ -99,7 +102,10 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
-
+        GameObject bulletInstance = Instantiate(fireball);
+        bulletInstance.transform.forward = fireballOrigin.right;
+        bulletInstance.transform.position = fireballOrigin.position;
+        this.GetComponent<LifeCounter>().recibirDaño();
     }
 
     void GoIdle()
