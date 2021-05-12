@@ -146,16 +146,18 @@ public class EnemyController : MonoBehaviour
     bool IsInSightToAttack()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-
+        
         if (distance < 2.5f)
         {
             return true;
         }
-        else if (distance > 4f)
+        else if (distance > 2.6f)
         {
             walkToPoints.Walk();
+            Debug.Log("distancia del player al enemy " + distance);
         }
 
+       
         return false;
         
     }
