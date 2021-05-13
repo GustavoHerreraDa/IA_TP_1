@@ -23,6 +23,7 @@ public class IA_Attack<T> : IState<T>
 
     public void Awake()
     {
+        Debug.Log("Awake de Attack");
 
     }
 

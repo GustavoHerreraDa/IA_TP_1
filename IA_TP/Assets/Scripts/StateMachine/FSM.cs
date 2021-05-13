@@ -18,15 +18,19 @@ public class FSM<T>
     }
     public void OnUpdate()
     {
-        Debug.Log("FSM CURRENT " + _current.ToString());
         _current.Execute();
     }
     public void Transition(T input)
     {
-        Debug.Log(input.ToString());
 
         IState<T> newState = _current.GetState(input);
-        if (newState == null) return;
+        if (newState == null)
+        {
+            //Debug.Log(_current.ToString() + " input is null " + input.ToString());
+            return;
+        }
+
+        Debug.Log(" newState " + newState.ToString());
         _current.Sleep();
         newState.Awake();
         _current = newState;

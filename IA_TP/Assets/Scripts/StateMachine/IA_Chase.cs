@@ -31,7 +31,10 @@ public class IA_Chase<T> : IState<T>
 
     public void Awake()
     {
+        Debug.Log("Awake de CHASE");
+
         playerTransform = Object.FindObjectOfType<Player>().transform;
+        enemy.keepChasing = true;
         seek = new Seek(enemy.transform, playerTransform.transform, 3);
     }
 

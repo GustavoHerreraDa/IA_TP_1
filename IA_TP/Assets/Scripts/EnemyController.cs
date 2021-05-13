@@ -44,6 +44,9 @@ public class EnemyController : MonoBehaviour
     public Transform fireballOrigin;
     public GameObject fireball;
 
+    public bool keepChasing;
+
+
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
@@ -62,9 +65,12 @@ public class EnemyController : MonoBehaviour
 
         idle.AddTransition("Patrol", patrol);
         patrol.AddTransition("Chase", chase);
+        
         chase.AddTransition("Attack", attack);
-        attack.AddTransition("Chase", chase);
+        chase.AddTransition("Patrol", patrol);
 
+        attack.AddTransition("Chase", chase);
+        //attack.AddTransition("Patrol", patrol);
 
         finateStateMachine = new FSM<string>(idle);
 
@@ -108,6 +114,7 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
+        RotateToPlayer();
         if (shouldShoot)
         {
             GameObject bulletInstance = Instantiate(fireball);
@@ -140,7 +147,18 @@ public class EnemyController : MonoBehaviour
 
     bool IsInSightToChase()
     {
-        return lineOfSight.IsInSight(player.transform);
+        var isSight = lineOfSight.IsInSight(player.transform);
+
+        if (keepChasing)
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) > 7)
+                return false;
+            else
+                return true;
+        }
+
+
+        return isSight;
     }
 
     bool IsInSightToAttack()
@@ -151,11 +169,12 @@ public class EnemyController : MonoBehaviour
         {
             return true;
         }
-        else if (distance > 2.6f)
-        {
-            walkToPoints.Walk();
-            Debug.Log("distancia del player al enemy " + distance);
-        }
+        //else if (distance > 3f)
+        //{
+        //    Debug.Log("Tendria q volver chase");
+        //    return false;
+            
+        //}
 
        
         return false;
@@ -184,6 +203,17 @@ public class EnemyController : MonoBehaviour
             shootTimer = 0;
             shouldShoot = true;
         }
+    }
+
+    void RotateToPlayer()
+    {
+        float RotationStep = 2f * Time.deltaTime;
+
+        Vector3 LookAtWayPoint = player.transform.position - transform.position;
+
+        Quaternion RotationToTarget = Quaternion.LookRotation(LookAtWayPoint);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, RotationToTarget, RotationStep);
     }
 
 
